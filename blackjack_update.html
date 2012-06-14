@@ -1,0 +1,55 @@
+// Make your card constructor again here, but make sure to use private
+// variables!
+function Card(s,n){
+var suit = s;
+var number = n;
+
+var getSuit = function(){
+  return suit;  
+};
+
+var getNumber = function(){
+    return number;
+};
+
+this.getValue = function(){
+var result = number;
+if(number === 1)
+{result = 11;}
+if(number === 11 || number === 12 || number ===13)
+{result = 10;}
+return result;
+};
+
+}
+
+// Make a deal function here.  It should return a new card with a suit
+// that is a random number from 1 to 4, and a number that is a random
+// number between 1 and 13
+var deal = function(){
+    var ranN = Math.floor((Math.random()*13)+1);
+    var ranS =Math.floor((Math.random()*4)+1);
+    var newCard = new Card(ranS,ranN);
+return newCard;
+};
+
+// examples of the deal function in action
+var card1 = deal();
+var card2 = deal();
+console.log(card1.getValue());
+console.log(card2.getValue());
+
+function Hand(){
+    this.card1 = deal();
+    this.card2 = deal();
+}
+
+var myHand = new Hand(); var yourHand = new Hand();
+
+console.log("I scored a "+myHand.score()+" and you scored a "+ yourHand.score());
+
+if(yourHand.score() > myHand.score()) console.log("you win!"); else if(yourHand.score() < myHand.score()) console.log("I win!"); else console.log("We tied!");
+
+
+
+
